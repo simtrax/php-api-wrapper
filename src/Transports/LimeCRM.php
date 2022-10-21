@@ -4,7 +4,7 @@ namespace Cristal\ApiWrapper\Transports;
 
 use Curl\Curl as CurlClient;
 
-class Bearer extends Transport
+class LimeCRM extends Transport
 {
     /**
      * @var string
