@@ -53,6 +53,8 @@ class Api
 		) {
 			$arguments[0]['_limit'] = $arguments[0]['limit'];
 			unset($arguments[0]['limit']);
+			$arguments[0]['_offset'] = $arguments[0]['offset'];
+			unset($arguments[0]['offset']);
 		}
 
         if (method_exists($this, $name)) {

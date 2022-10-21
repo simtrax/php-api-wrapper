@@ -104,6 +104,10 @@ class Transport implements TransportInterface
         $response = json_decode($rawResponse, true);
 
         if ($httpStatusCode >= 200 && $httpStatusCode <= 299) {
+			if(class_basename($this) == 'LimeCRM') {
+				return $response['_embedded']['limeobjects'];
+			}
+			
             return $response;
         }
 
