@@ -48,13 +48,15 @@ class Api
      */
     public function __call($name, $arguments)
     {
-		if(class_basename($this->transport) == 'LimeCRM' && 
-			isset($arguments[0]['limit'])
-		) {
-			$arguments[0]['_limit'] = $arguments[0]['limit'];
-			unset($arguments[0]['limit']);
-			$arguments[0]['_offset'] = $arguments[0]['offset'];
-			unset($arguments[0]['offset']);
+		if(class_basename($this->transport) == 'LimeCRM') {
+			if(isset($arguments[0]['limit'])) {
+				$arguments[0]['_limit'] = $arguments[0]['limit'];
+				unset($arguments[0]['limit']);
+			}
+			if(isset($arguments[0]['offset'])) {
+				$arguments[0]['_offset'] = $arguments[0]['offset'];
+				unset($arguments[0]['offset']);
+			}
 		}
 
         if (method_exists($this, $name)) {
