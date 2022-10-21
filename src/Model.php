@@ -49,18 +49,18 @@ abstract class Model implements ArrayAccess, JsonSerializable
     protected static $api = 'default';
 
     /**
+     * Wether to pluralize or not
+     *
+     * @var bool
+     */
+    protected $pluralize = true;
+
+    /**
      * Indicates if the model exists.
      *
      * @var bool
      */
     public $exists = false;
-
-    /**
-     * Wether to pluralize or not
-     *
-     * @var bool
-     */
-    public $pluralize = true;
 
     /**
      * The array of global scopes on the model.
