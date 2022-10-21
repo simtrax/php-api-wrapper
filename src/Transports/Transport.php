@@ -162,7 +162,7 @@ class Transport implements TransportInterface
      */
     protected function getUrl(string $endpoint, array $data = [])
     {
-        $url = $this->getEntrypoint() . ltrim($endpoint, '/');
+        $url = $this->getEntrypoint() . ltrim($endpoint, '/') . '/';
 
         return $url . $this->appendData($data);
     }

@@ -56,6 +56,13 @@ abstract class Model implements ArrayAccess, JsonSerializable
     public $exists = false;
 
     /**
+     * Wether to pluralize or not
+     *
+     * @var bool
+     */
+    public $pluralize = true;
+
+    /**
      * The array of global scopes on the model.
      *
      * @var array
@@ -116,11 +123,15 @@ abstract class Model implements ArrayAccess, JsonSerializable
      */
     public function getEntities(): string
     {
-        if (substr($this->entity, -1) === 'y') {
-            return rtrim($this->entity, 'y').'ies';
-        }
+		if($this->pluralize) {
+			if (substr($this->entity, -1) === 'y') {
+				return rtrim($this->entity, 'y').'ies';
+			}
+	
+			return rtrim($this->entity, 's').'s';
+		}
 
-        return rtrim($this->entity, 's').'s';
+		return $this->entity;
     }
 
     public function __construct($fill = [], $exists = false)
